@@ -23,7 +23,9 @@ class Student(Person):
         self.__courses = {}
         self.__grades = {}
 
-    #I ignore the toString() function because it will get overwritten anyways
+    def toString(self):
+        #Since they didn't specify what to do with this method
+        return super().toString()
 
     def addCourseGrade(self, course: str, grade: int) -> None:
         #Not really sure what this function does with the variables
@@ -54,7 +56,7 @@ class Student(Person):
         return total/iterations
     
     def toString(self) -> str:
-        return "Student:"+self.__name+"("+self.__address+")"
+        return "Student: "+super().toString()
 
 class Teacher(Person):
     def __init__(self, name: str, address: str):
@@ -62,7 +64,9 @@ class Teacher(Person):
         self.__numCourses = 0
         self.__courses = {}
 
-    #I ignore the toString() function because it will get overwritten anyways
+    def toString(self):
+        #Since they didn't specify what to do with this method
+        return super().toString()
 
     def addCourse(self, course: str) -> bool:
         try:
@@ -86,4 +90,4 @@ class Teacher(Person):
             return False
 
     def toString(self) -> str:
-        return "Teacher:"+self.__name+"("+self.__address+")"
+        return "Teacher: "+super().toString()

@@ -1,6 +1,13 @@
 class Circle:
-    #Apparently python doesn't support multiple constructors
-    def __init__(self, radius:float = 1.0, color:str = "red"):
+    def __init(self):
+        self.__radius = 1.0
+        self.color = "red"
+
+    def __init__(self, radius: float):
+        self.radius = radius
+        self.color = "red"
+
+    def __init__(self, radius:float = 1.0, color: str = "red"):
         self.__radius = radius
         self.__color = color
 
@@ -24,9 +31,21 @@ class Circle:
         return 3.1416 * (self.__radius ** 2)
 
 class Cylinder(Circle):
-    def __init__(self, height: float = 1.0, radius: float = 1.0, color: str = "red"):
-        Circle.__init__(self, radius, color)
+    def __init__(self):
+        super().__init__()
+        self.__height = 1.0
+
+    def __init__(self, height: float):
+        super().__init__()
         self.__height = height
+    
+    def __init__(self, height: float, radius: float):
+        super().__init__(radius)
+        self.__height = height
+        
+    def __init__(self, height: float = 1.0, radius: float = 1.0, color: str = "red"):
+        self.__height = height
+        super().__init__(radius, color)
 
     def getHeight(self) -> float:
         return self.__height
@@ -40,3 +59,6 @@ class Cylinder(Circle):
     
     def getVolume(self) -> float:
         return self.__height*self.getArea()
+
+test = Cylinder(1.0, 1.0, "blue")
+print(test.getVolume())
