@@ -12,18 +12,18 @@ print(data.isnull().sum().sum())
 
 # Devise a strategy for filling in all the missing values
 # Create a new dataset that is equal to original dataset but with missing data filled in
-# I'll assume NaN = Median steps
-print(data.fillna(data.steps.mean()))
+# I'll assume NaN = Mean steps
+new_dataset = data.fillna(data.steps.mean())
 
 # Make histogram of total steps taken each day
-data = data.iloc[:, [0, 1]].dropna() #take only date and steps
-data_total = data.groupby(["date"]).sum()
+new_dataset = new_dataset.iloc[:, [0, 1]].dropna() #take only date and steps
+data_total = new_dataset.groupby(["date"]).sum()
 plt.hist(data_total)
 plt.ylabel("Total Steps")
 plt.xlabel("Date")
 plt.show()
 
 # Calculate & report the mean, median of the total steps taken per day
-data_total = data.groupby(["date"]).sum()
+data_total = new_dataset.groupby(["date"]).sum()
 print(data_total.mean())
 print(data_total.median())
